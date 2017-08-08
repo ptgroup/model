@@ -1,0 +1,249 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7996,        241]
+NotebookOptionsPosition[      7608,        223]
+NotebookOutlinePosition[      7943,        238]
+CellTagsIndexPosition[      7900,        235]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pnDot", "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"-", 
+      RowBox[{"pn", "[", "t", "]"}]}], "t1n"], "-", 
+    FractionBox[
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"pn", "[", "t", "]"}]}], "t1e"], "-", 
+    FractionBox[
+     RowBox[{"\[Alpha]", " ", "c", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"pn", "[", "t", "]"}], "-", 
+        RowBox[{"pe", "[", "t", "]"}]}], ")"}]}], 
+     RowBox[{"2", " ", "t1e"}]], "-", 
+    FractionBox[
+     RowBox[{"\[Beta]", " ", "c", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"pn", "[", "t", "]"}], "+", 
+        RowBox[{"pe", "[", "t", "]"}]}], ")"}]}], 
+     RowBox[{"2", " ", "t1e"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"peDot", "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"pe", "[", "t", "]"}]}], "-", "1"}], "t1e"], "-", 
+    FractionBox[
+     RowBox[{"s", " ", 
+      RowBox[{"pe", "[", "t", "]"}]}], "t1e"], "-", 
+    FractionBox[
+     RowBox[{"\[Alpha]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"pe", "[", "t", "]"}], "-", 
+        RowBox[{"pn", "[", "t", "]"}]}], ")"}]}], 
+     RowBox[{"2", " ", "t1e"}]], "-", 
+    FractionBox[
+     RowBox[{"\[Beta]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"pe", "[", "t", "]"}], "+", 
+        RowBox[{"pn", "[", "t", "]"}]}], ")"}]}], 
+     RowBox[{"2", " ", "t1e"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"sol", "=", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"pnDot", "\[Equal]", "0"}], ",", 
+      RowBox[{"peDot", "\[Equal]", "0"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"pn", "[", "t", "]"}], ",", 
+      RowBox[{"pe", "[", "t", "]"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pn", "[", "t", "]"}], "/.", "sol"}], "//", 
+  "Simplify"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pe", "[", "t", "]"}], "/.", "sol"}], "//", "Simplify"}]}], "Input",\
+
+ CellChangeTimes->{{3.678017051489767*^9, 3.678017145543041*^9}, {
+  3.678017905602501*^9, 3.67801796793859*^9}, {3.678017998079192*^9, 
+  3.678017998309515*^9}, {3.678018312485819*^9, 3.678018328673347*^9}, {
+  3.678018461578129*^9, 3.67801851977422*^9}, {3.67801870018745*^9, 
+  3.678018800698078*^9}, {3.6800047278961697`*^9, 3.6800048206053677`*^9}, {
+  3.6800048669654512`*^9, 3.680004871196981*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"pn", "[", "t", "]"}], "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"t1n", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"c", " ", "\[Alpha]"}], "-", 
+          RowBox[{"c", " ", "\[Beta]"}]}], ")"}]}], 
+       RowBox[{
+        RowBox[{"2", " ", "t1e"}], "+", 
+        RowBox[{"2", " ", "s", " ", "t1e"}], "+", 
+        RowBox[{"t1e", " ", "\[Alpha]"}], "+", 
+        RowBox[{"c", " ", "t1n", " ", "\[Alpha]"}], "+", 
+        RowBox[{"c", " ", "s", " ", "t1n", " ", "\[Alpha]"}], "+", 
+        RowBox[{"t1e", " ", "\[Beta]"}], "+", 
+        RowBox[{"c", " ", "t1n", " ", "\[Beta]"}], "+", 
+        RowBox[{"c", " ", "s", " ", "t1n", " ", "\[Beta]"}], "+", 
+        RowBox[{"2", " ", "c", " ", "t1n", " ", "\[Alpha]", " ", "\[Beta]"}], 
+        "+", 
+        RowBox[{"2", " ", "t1n", " ", "\[Zeta]"}], "+", 
+        RowBox[{"2", " ", "s", " ", "t1n", " ", "\[Zeta]"}], "+", 
+        RowBox[{"t1n", " ", "\[Alpha]", " ", "\[Zeta]"}], "+", 
+        RowBox[{"t1n", " ", "\[Beta]", " ", "\[Zeta]"}]}]]}]}], ",", 
+    RowBox[{
+     RowBox[{"pe", "[", "t", "]"}], "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"2", " ", "t1e"}], "+", 
+        RowBox[{"c", " ", "t1n", " ", "\[Alpha]"}], "+", 
+        RowBox[{"c", " ", "t1n", " ", "\[Beta]"}], "+", 
+        RowBox[{"2", " ", "t1n", " ", "\[Zeta]"}]}], 
+       RowBox[{
+        RowBox[{"2", " ", "t1e"}], "+", 
+        RowBox[{"2", " ", "s", " ", "t1e"}], "+", 
+        RowBox[{"t1e", " ", "\[Alpha]"}], "+", 
+        RowBox[{"c", " ", "t1n", " ", "\[Alpha]"}], "+", 
+        RowBox[{"c", " ", "s", " ", "t1n", " ", "\[Alpha]"}], "+", 
+        RowBox[{"t1e", " ", "\[Beta]"}], "+", 
+        RowBox[{"c", " ", "t1n", " ", "\[Beta]"}], "+", 
+        RowBox[{"c", " ", "s", " ", "t1n", " ", "\[Beta]"}], "+", 
+        RowBox[{"2", " ", "c", " ", "t1n", " ", "\[Alpha]", " ", "\[Beta]"}], 
+        "+", 
+        RowBox[{"2", " ", "t1n", " ", "\[Zeta]"}], "+", 
+        RowBox[{"2", " ", "s", " ", "t1n", " ", "\[Zeta]"}], "+", 
+        RowBox[{"t1n", " ", "\[Alpha]", " ", "\[Zeta]"}], "+", 
+        RowBox[{"t1n", " ", "\[Beta]", " ", "\[Zeta]"}]}]]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.680004802974268*^9, 3.68000482117682*^9}, 
+   3.6800048717305098`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  FractionBox[
+   RowBox[{"c", " ", "t1n", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "\[Alpha]"}], "+", "\[Beta]"}], ")"}]}], 
+   RowBox[{
+    RowBox[{"t1e", " ", 
+     RowBox[{"(", 
+      RowBox[{"2", "+", 
+       RowBox[{"2", " ", "s"}], "+", "\[Alpha]", "+", "\[Beta]"}], ")"}]}], 
+    "+", 
+    RowBox[{"t1n", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"c", " ", 
+        RowBox[{"(", 
+         RowBox[{"\[Alpha]", "+", 
+          RowBox[{"s", " ", "\[Alpha]"}], "+", "\[Beta]", "+", 
+          RowBox[{"s", " ", "\[Beta]"}], "+", 
+          RowBox[{"2", " ", "\[Alpha]", " ", "\[Beta]"}]}], ")"}]}], "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", "+", 
+          RowBox[{"2", " ", "s"}], "+", "\[Alpha]", "+", "\[Beta]"}], ")"}], 
+        " ", "\[Zeta]"}]}], ")"}]}]}]], "}"}]], "Output",
+ CellChangeTimes->{{3.680004802974268*^9, 3.68000482117682*^9}, 
+   3.680004871731985*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"2", " ", "t1e"}], "+", 
+     RowBox[{"t1n", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"c", " ", 
+         RowBox[{"(", 
+          RowBox[{"\[Alpha]", "+", "\[Beta]"}], ")"}]}], "+", 
+        RowBox[{"2", " ", "\[Zeta]"}]}], ")"}]}]}], 
+    RowBox[{
+     RowBox[{"t1e", " ", 
+      RowBox[{"(", 
+       RowBox[{"2", "+", 
+        RowBox[{"2", " ", "s"}], "+", "\[Alpha]", "+", "\[Beta]"}], ")"}]}], 
+     "+", 
+     RowBox[{"t1n", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"c", " ", 
+         RowBox[{"(", 
+          RowBox[{"\[Alpha]", "+", 
+           RowBox[{"s", " ", "\[Alpha]"}], "+", "\[Beta]", "+", 
+           RowBox[{"s", " ", "\[Beta]"}], "+", 
+           RowBox[{"2", " ", "\[Alpha]", " ", "\[Beta]"}]}], ")"}]}], "+", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "+", 
+           RowBox[{"2", " ", "s"}], "+", "\[Alpha]", "+", "\[Beta]"}], ")"}], 
+         " ", "\[Zeta]"}]}], ")"}]}]}]]}], "}"}]], "Output",
+ CellChangeTimes->{{3.680004802974268*^9, 3.68000482117682*^9}, 
+   3.680004871758765*^9}]
+}, Open  ]]
+},
+WindowSize->{1920, 1021},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2520, 76, 214, "Input"],
+Cell[3103, 100, 2374, 54, 91, "Output"],
+Cell[5480, 156, 959, 28, 51, "Output"],
+Cell[6442, 186, 1150, 34, 51, "Output"]
+}, Open  ]]
+}
+]
+*)
+

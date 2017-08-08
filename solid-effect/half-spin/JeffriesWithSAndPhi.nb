@@ -1,0 +1,265 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8072,        257]
+NotebookOptionsPosition[      7765,        241]
+NotebookOutlinePosition[      8100,        256]
+CellTagsIndexPosition[      8057,        253]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"physicalTimes", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"t1e", "\[Rule]", "0.03"}], ",", 
+      RowBox[{"t1n", "\[Rule]", 
+       RowBox[{"25", "*", "60"}]}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "These", " ", "take", " ", "the", " ", "equations", " ", "for", " ", 
+    SubscriptBox["P", "n"], " ", "and", " ", 
+    SubscriptBox["P", "e"], " ", "and", " ", "make", " ", "them", " ", "more",
+     " ", "\"\<regular\>\""}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"constToParam", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"aa", "\[Rule]", "aConst"}], ",", 
+     RowBox[{"bb", "\[Rule]", "bConst"}], ",", 
+     RowBox[{"cc", "\[Rule]", "cConst"}], ",", 
+     RowBox[{"dd", "\[Rule]", "dConst"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aConst", "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"-", "t1e"}], "t1n"], "-", 
+    FractionBox[
+     RowBox[{"c", " ", "\[Alpha]"}], "2"], "-", 
+    FractionBox[
+     RowBox[{"c", " ", "\[Beta]"}], "2"], "-", "\[Phi]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bConst", "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"c", " ", "\[Alpha]"}], "2"], "-", 
+    FractionBox[
+     RowBox[{"c", " ", "\[Beta]"}], 
+     RowBox[{"2", " "}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cConst", "=", 
+   RowBox[{
+    FractionBox["\[Alpha]", "2"], "-", 
+    FractionBox["\[Beta]", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dConst", "=", 
+    RowBox[{
+     RowBox[{"-", "1"}], "-", "s", "-", 
+     FractionBox["\[Alpha]", "2"], "-", 
+     FractionBox["\[Beta]", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "These", " ", "correspond", " ", "to", " ", "coefficients", " ", "in", " ",
+     "the", " ", "decoupled", " ", "equation", " ", "for", " ", 
+    SubscriptBox["P", "n"], "\[IndentingNewLine]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+      "a", " ", "system", " ", "of", " ", "two", " ", "linear", " ", 
+       "first"}], "-", 
+      RowBox[{
+      "order", " ", "ODEs", " ", "is", " ", "transformed", " ", "into", " ", 
+       "a", " ", "single", " ", "linear", " ", "second"}], "-", 
+      RowBox[{"order", " ", "ODE"}]}], ")"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"simplToConst", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"aaa", "\[Rule]", "aSimpl"}], ",", 
+     RowBox[{"bbb", "\[Rule]", "bSimpl"}], ",", 
+     RowBox[{"ccc", "\[Rule]", "cSimpl"}], ",", " ", 
+     RowBox[{"pn0", "\[Rule]", "pn0Simpl"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aSimpl", "=", 
+   FractionBox[
+    RowBox[{"t1e", "^", "2"}], "bb"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bSimpl", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "t1e"}], " ", 
+     FractionBox["aa", "bb"]}], "-", 
+    RowBox[{"t1e", " ", 
+     FractionBox["dd", "bb"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cSimpl", "=", 
+   RowBox[{
+    RowBox[{"aa", " ", 
+     FractionBox["dd", "bb"]}], "-", "cc"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pn0Simpl", "=", 
+   FractionBox[
+    RowBox[{"-", "bb"}], "t1e"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eqnDecouple", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"aaa", " ", 
+        RowBox[{
+         RowBox[{"pn", "''"}], "[", "t", "]"}]}], "+", 
+       RowBox[{"bbb", " ", 
+        RowBox[{
+         RowBox[{"pn", "'"}], "[", "t", "]"}]}], "+", 
+       RowBox[{"ccc", " ", 
+        RowBox[{"pn", "[", "t", "]"}]}], "+", "1"}], "\[Equal]", "0"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"pn", "[", "0", "]"}], "\[Equal]", "0"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"pn", "'"}], "[", "0", "]"}], "\[Equal]", "pn0"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"solDecouple", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{"eqnDecouple", ",", 
+      RowBox[{"pn", "[", "t", "]"}], ",", "t"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["P", "n"], " ", "in", " ", "terms", " ", "of", " ", 
+     "simplified", " ", "aaa"}], ",", " ", "bbb", ",", " ", 
+    RowBox[{"etc", "."}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"pnSimpl", "[", "t_", "]"}], "=", 
+    RowBox[{
+     RowBox[{"pn", "[", "t", "]"}], "/.", "solDecouple"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["P", "n"], " ", "in", " ", "terms", " ", "of", " ", 
+     "constants", " ", "aa"}], ",", " ", "bb", ",", " ", 
+    RowBox[{"etc", "."}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"pnConst", "[", "t_", "]"}], "=", 
+    RowBox[{
+     RowBox[{"pnSimpl", "[", "t", "]"}], "/.", "simplToConst"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["P", "n"], " ", "in", " ", "terms", " ", "of", " ", 
+     "actual", " ", "parameters", " ", "\[Alpha]"}], ",", " ", "\[Beta]", ",",
+     " ", 
+    RowBox[{"etc", "."}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"pnParam", "[", "t_", "]"}], "=", 
+    RowBox[{
+     RowBox[{"pnConst", "[", "t", "]"}], "/.", "constToParam"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    SubscriptBox["P", "n"], " ", "with", " ", "physical", " ", "time", " ", 
+    "parameters"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pnPhysical", "[", "t_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"pnParam", "[", "t", "]"}], "/.", "physicalTimes"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "1"}], "/", "ccc"}], "/.", "simplToConst"}], "/.", 
+   "constToParam"}], "//", "Simplify"}]}], "Input",
+ CellChangeTimes->{{3.680521492987721*^9, 3.680521527321259*^9}, {
+  3.680521561234416*^9, 3.680521591525737*^9}, {3.68527473914657*^9, 
+  3.685274741049081*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"c", " ", "t1n", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "\[Alpha]"}], "+", "\[Beta]"}], ")"}]}], 
+  RowBox[{
+   RowBox[{"t1e", " ", 
+    RowBox[{"(", 
+     RowBox[{"2", "+", 
+      RowBox[{"2", " ", "s"}], "+", "\[Alpha]", "+", "\[Beta]"}], ")"}]}], 
+   "+", 
+   RowBox[{"t1n", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"c", " ", 
+       RowBox[{"(", 
+        RowBox[{"\[Alpha]", "+", 
+         RowBox[{"s", " ", "\[Alpha]"}], "+", "\[Beta]", "+", 
+         RowBox[{"s", " ", "\[Beta]"}], "+", 
+         RowBox[{"2", " ", "\[Alpha]", " ", "\[Beta]"}]}], ")"}]}], "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2", "+", 
+         RowBox[{"2", " ", "s"}], "+", "\[Alpha]", "+", "\[Beta]"}], ")"}], 
+       " ", "\[Phi]"}]}], ")"}]}]}]]], "Output",
+ CellChangeTimes->{{3.680521568082955*^9, 3.6805215921249847`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1916, 1041},
+WindowMargins->{{2, Automatic}, {Automatic, 18}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6278, 188, 892, "Input"],
+Cell[6861, 212, 888, 26, 54, "Output"]
+}, Open  ]]
+}
+]
+*)
+

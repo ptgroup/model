@@ -1,0 +1,334 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11035,        326]
+NotebookOptionsPosition[     10759,        312]
+NotebookOutlinePosition[     11097,        327]
+CellTagsIndexPosition[     11054,        324]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Notation", ":", "\[IndentingNewLine]", "ep"}], ",", " ", 
+    RowBox[{"em", ";", " ", "fp"}], ",", " ", 
+    RowBox[{"fm", " ", "=", " ", 
+     RowBox[{
+     "number", " ", "of", " ", "each", " ", "type", " ", "of", " ", 
+      "electron", " ", 
+      RowBox[{"up", "/", "down"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"e", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"ej", " ", "and", " ", "f"}], " ", "=", " ", "ei"}]}], ")"}],
+       "\[IndentingNewLine]", "np"}]}], ",", " ", 
+    RowBox[{"nm", " ", "=", " ", 
+     RowBox[{"number", " ", "of", " ", "nuclei", " ", 
+      RowBox[{"up", "/", "down"}], "\[IndentingNewLine]", "et"}]}], ",", " ", 
+    "ft", ",", " ", 
+    RowBox[{"nt", " ", "=", " ", 
+     RowBox[{"total", " ", "number", " ", "of", " ", "each", " ", 
+      RowBox[{"electron", "/", "nuclei"}]}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{3.696855478132125*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "The", " ", "thermal", " ", "mixing", " ", "model", " ", "given", " ", 
+     "in", " ", "Wenkebach"}], ",", " ", 
+    RowBox[{"but", " ", "with", " ", "C", " ", "parameters", " ", "correctly", 
+     RowBox[{"(", "?", ")"}], " ", "used"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"subs", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"nt", "\[Rule]", 
+        RowBox[{
+         RowBox[{"np", "[", "t", "]"}], "+", 
+         RowBox[{"nm", "[", "t", "]"}]}]}], ",", 
+       RowBox[{"et", "\[Rule]", 
+        RowBox[{
+         RowBox[{"ep", "[", "t", "]"}], "+", 
+         RowBox[{"em", "[", "t", "]"}]}]}], ",", 
+       RowBox[{"ft", "\[Rule]", 
+        RowBox[{
+         RowBox[{"fp", "[", "t", "]"}], "+", 
+         RowBox[{"fm", "[", "t", "]"}]}]}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Parameters", " ", "to", " ", 
+      RowBox[{"change", ":", "\[IndentingNewLine]", 
+       RowBox[{"*", " ", "Below"}]}]}], ",", " ", 
+     RowBox[{
+     "you", " ", "can", " ", "change", " ", "the", " ", "value", " ", "of", 
+      " ", "w", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        SuperscriptBox[
+         SubscriptBox["W", "tm"], "+"], ")"}], "."}], "\[IndentingNewLine]", 
+      "*", " ", "peInit"}], ",", " ", "pfInit", ",", " ", 
+     RowBox[{
+     "and", " ", "pnInit", " ", "are", " ", "the", " ", "initial", " ", 
+      "polarizations", " ", "of", " ", "the", " ", "two", " ", "types", " ", 
+      "of", " ", "electrons", " ", "and", " ", "the", " ", "nuclei"}], ",", 
+     " ", 
+     RowBox[{
+      RowBox[{"respectively", "."}], "\[IndentingNewLine]", "*", " ", "ce", 
+      " ", "and", " ", "cf", " ", "are", " ", "the", " ", "ratios", " ", "of",
+       " ", "the", " ", "number", " ", "of", " ", "each", " ", "type", " ", 
+      "of", " ", "electron", " ", "to", " ", "the", " ", "number", " ", "of", 
+      " ", "nuclei", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+        "the", " ", "analogue", " ", "to", " ", "the", " ", "constant", " ", 
+         "C", " ", "in", " ", "the", " ", "solid", " ", "effect"}], ")"}], 
+       "."}]}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"initial", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"w", "\[Rule]", "10"}], ",", 
+       RowBox[{"peInit", "\[Rule]", "1"}], ",", 
+       RowBox[{"pfInit", "\[Rule]", 
+        RowBox[{"-", "1"}]}], ",", 
+       RowBox[{"pnInit", "\[Rule]", "0"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"constants", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ce", "\[Rule]", "1*^-4"}], ",", 
+       RowBox[{"cf", "\[Rule]", "1*^-4"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"thermalMixingEqns", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"ep", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"w", " ", 
+           RowBox[{"(", "cf", ")"}]}], 
+          RowBox[{"ft", " ", "nt"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"em", "[", "t", "]"}], 
+            RowBox[{"fp", "[", "t", "]"}], 
+            RowBox[{"nm", "[", "t", "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"ep", "[", "t", "]"}], 
+            RowBox[{"fm", "[", "t", "]"}], 
+            RowBox[{"np", "[", "t", "]"}]}]}], ")"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"em", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           RowBox[{"-", "w"}], " ", 
+           RowBox[{"(", "cf", ")"}]}], 
+          RowBox[{"ft", " ", "nt"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"em", "[", "t", "]"}], 
+            RowBox[{"fp", "[", "t", "]"}], 
+            RowBox[{"nm", "[", "t", "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"ep", "[", "t", "]"}], 
+            RowBox[{"fm", "[", "t", "]"}], 
+            RowBox[{"np", "[", "t", "]"}]}]}], ")"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"fp", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           RowBox[{"-", "w"}], " ", 
+           RowBox[{"(", "ce", ")"}]}], 
+          RowBox[{"et", " ", "nt"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"em", "[", "t", "]"}], 
+            RowBox[{"fp", "[", "t", "]"}], 
+            RowBox[{"nm", "[", "t", "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"ep", "[", "t", "]"}], 
+            RowBox[{"fm", "[", "t", "]"}], 
+            RowBox[{"np", "[", "t", "]"}]}]}], ")"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"fm", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"w", " ", 
+           RowBox[{"(", "ce", ")"}]}], 
+          RowBox[{"et", " ", "nt"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"em", "[", "t", "]"}], 
+            RowBox[{"fp", "[", "t", "]"}], 
+            RowBox[{"nm", "[", "t", "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"ep", "[", "t", "]"}], 
+            RowBox[{"fm", "[", "t", "]"}], 
+            RowBox[{"np", "[", "t", "]"}]}]}], ")"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"np", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"w", " ", 
+           RowBox[{"(", 
+            RowBox[{"ce", "+", "cf"}], ")"}]}], 
+          RowBox[{"et", " ", "ft"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"em", "[", "t", "]"}], 
+            RowBox[{"fp", "[", "t", "]"}], 
+            RowBox[{"nm", "[", "t", "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"ep", "[", "t", "]"}], 
+            RowBox[{"fm", "[", "t", "]"}], 
+            RowBox[{"np", "[", "t", "]"}]}]}], ")"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"nm", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           RowBox[{"-", "w"}], 
+           RowBox[{"(", 
+            RowBox[{"ce", "+", "cf"}], ")"}]}], 
+          RowBox[{"et", " ", "ft"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"em", "[", "t", "]"}], 
+            RowBox[{"fp", "[", "t", "]"}], 
+            RowBox[{"nm", "[", "t", "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"ep", "[", "t", "]"}], 
+            RowBox[{"fm", "[", "t", "]"}], 
+            RowBox[{"np", "[", "t", "]"}]}]}], ")"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ep", "[", "0", "]"}], "\[Equal]", 
+        FractionBox[
+         RowBox[{"ce", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", "peInit"}], ")"}]}], "2"]}], ",", 
+       RowBox[{
+        RowBox[{"em", "[", "0", "]"}], "\[Equal]", 
+        FractionBox[
+         RowBox[{"ce", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", "peInit"}], ")"}]}], "2"]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fp", "[", "0", "]"}], "\[Equal]", 
+        FractionBox[
+         RowBox[{"cf", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", "pfInit"}], ")"}]}], "2"]}], ",", 
+       RowBox[{
+        RowBox[{"fm", "[", "0", "]"}], "\[Equal]", 
+        FractionBox[
+         RowBox[{"cf", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", "pfInit"}], ")"}]}], "2"]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"np", "[", "0", "]"}], "\[Equal]", 
+        FractionBox[
+         RowBox[{"1", "+", "pnInit"}], "2"]}], ",", 
+       RowBox[{
+        RowBox[{"nm", "[", "0", "]"}], "\[Equal]", 
+        FractionBox[
+         RowBox[{"1", "-", "pnInit"}], "2"]}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sol", "=", 
+     RowBox[{"NDSolve", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"thermalMixingEqns", "/.", "subs"}], "/.", "initial"}], "/.",
+         "constants"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"em", ",", "ep", ",", "fm", ",", "fp", ",", "nm", ",", "np"}],
+         "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "10000"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"np", "[", "t", "]"}], "-", 
+         RowBox[{"nm", "[", "t", "]"}]}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"np", "[", "t", "]"}], "+", 
+         RowBox[{"nm", "[", "t", "]"}]}], ")"}]}], "/.", "sol"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "100"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}]}]], "Input"]
+},
+WindowSize->{960, 1016},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 992, 24, 129, "Input"],
+Cell[1553, 46, 9202, 264, 754, "Input"]
+}
+]
+*)
+
